@@ -1,0 +1,538 @@
+@import '_shorthand_css.less';
+#font-ico{
+    .font(@inner){
+        [class^="icon-"]:before,[class*=" icon-"]:before, [class$="-icon"]:before {  text-decoration: inherit;  display: inline-block;  speak: none; font-family: @inner;  font-weight: normal;  font-style: normal;  text-decoration: inherit;  -webkit-font-smoothing: antialiased;}
+    }
+
+    // iconos con fuente
+    // hack ie7 para incluir codigo de fuente
+    .ico(@inner,@ie,@type) when (@ie = 'ie7') and (@type = true) {
+        *zoom: ~"expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf@{inner}')";
+    }
+
+    // generico para incluir codigo de fuente
+    .ico(@inner,@type) when (@type = true){
+        content: "\f@{inner}";
+    }
+}
+
+// #icon>.font(@param);
+// primer parametro fuente iconografica
+
+//#icon>.ico(@param,@param2,@param3);
+//primer parametro:
+//      -string  : ruta de imagen icono
+//      -string  : numero de codigo para fuente.
+//segundo parametro
+//      -string  : ie7  (para definir si incuimos hack para ie)
+//      -boolean : true (para saber si es icono por fuente)
+//tercer parametro
+//      -boolean : true (para saber si es icono por fuente)
+
+// #icon>.font('font');
+
+// #icon>.ico('../img/layout/');
+// #icon>.ico('105');
+
+// #icon>.ico('../img/layout/','ie7');
+// #icon>.ico('105',true);
+
+// #icon>.ico('105','ie7',true);
+
+#font-face{
+    .font(@name,@font,@id){
+        @font-face {
+            font-family: '@{name}';
+            src: url('@{font}.eot');
+            src: url('@{font}.eot?#iefix') format('embedded-opentype'),local('☺'),
+            url('@{font}.svg#@{id}') format('svg');
+            src: url('@{font}.woff') format('woff'), url('@{font}.ttf') format('truetype'), url('@{font}.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+    }
+    .ico(@name,@font){
+        @font-face {
+            font-family: '@{name}';
+            src: url('@{font}.eot');
+            src: url('@{font}.eot?#iefix') format('embedded-opentype'),
+            local('☺'), url('@{font}.woff') format('woff'),
+            url('@{font}.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+    }
+}
+
+// #font-face>.font('fontname','font','id svg');
+// #font-face>.ico('fontname','font');
+// primer parametro  : nombre a poner a la fuente
+// segundo parametro : nombre original de la fuente
+
+.font-bisel(90, @color:#FFFFFF, @blur){
+
+    @color-sat:   saturate(@color, 70%);
+    @color-des:   desaturate(@color, 70%);
+
+    @color-red-sat:     red(@color-sat);
+    @color-blue-sat:   blue(@color-sat);
+    @color-green-sat: green(@color-sat);
+
+    @color-red-des:     red(@color-des);
+    @color-blue-des:   blue(@color-des);
+    @color-green-des: green(@color-des);
+
+    text-shadow: 0 1px @blur+0px rgba(@color-red-des, @color-blue-des, @color-green-des, 0.5), 0 -1px @blur+0px rgba(@color-red-sat, @color-blue-sat, @color-green-sat, 0.3);
+}
+
+.font-bisel(270, @color:#FFFFFF, @blur){
+
+    @color-sat:   saturate(@color, 70%);
+    @color-des:   desaturate(@color, 70%);
+
+    @color-red-sat:     red(@color-sat);
+    @color-blue-sat:   blue(@color-sat);
+    @color-green-sat: green(@color-sat);
+
+    @color-red-des:     red(@color-des);
+    @color-blue-des:   blue(@color-des);
+    @color-green-des: green(@color-des);
+
+    text-shadow: 0 -1px @blur+0px rgba(@color-red-des, @color-blue-des, @color-green-des, 0.5), 0 1px @blur+0px rgba(@color-red-sat, @color-blue-sat, @color-green-sat, 0.3);
+}
+
+.font-bisel(45, @color:#FFFFFF, @blur){
+
+    @color-sat:   saturate(@color, 10%);
+    @color-des:   desaturate(@color, 10%);
+
+    @color-red-sat:     red(@color-sat);
+    @color-blue-sat:   blue(@color-sat);
+    @color-green-sat: green(@color-sat);
+
+    @color-red-des:     red(@color-des);
+    @color-blue-des:   blue(@color-des);
+    @color-green-des: green(@color-des);
+
+    text-shadow: -1px 1px @blur+0px rgba(@color-red-sat, @color-blue-sat, @color-green-sat, 0.3), 0 1px @blur+0px rgba(@color-red-sat, @color-blue-sat, @color-green-sat, 0.5);
+}
+
+.font-bisel(135, @color:#FFFFFF, @blur){
+
+    @color-sat:   saturate(@color, 10%);
+    @color-des:   desaturate(@color, 10%);
+
+    @color-red-sat:     red(@color-sat);
+    @color-blue-sat:   blue(@color-sat);
+    @color-green-sat: green(@color-sat);
+
+    @color-red-des:     red(@color-des);
+    @color-blue-des:   blue(@color-des);
+    @color-green-des: green(@color-des);
+
+    text-shadow: 1px 1px @blur+0px rgba(@color-red-sat, @color-blue-sat, @color-green-sat, 0.3), 0px 1px @blur+0px rgba(@color-red-sat, @color-blue-sat, @color-green-sat, 0.5);
+}
+
+
+.box-shadow-ie(@color, @direction, @strength){
+    filter: ~"progid:DXImageTransform.Microsoft.Shadow(color='@{color}', Direction=@direction, Strength=@strength)";
+}
+
+.text-shadow-ie(@color,@alpha,@offx,@offy,@blur){//parametro de posicion de sombra
+    @x: @offx  -1px;
+    @y: @offy  -1px;
+    *zoom: ~"expression( this.runtimeStyle['zoom'] = '1',this.runtimeStyle['position'] = 'relative', this.appendChild( document.createElement('span') ), this.children[0].runtimeStyle['fontSize'] = '45px', this.children[0].runtimeStyle['position'] = 'absolute',this.children[0].runtimeStyle['zIndex'] = '-1' ,this.children[0].runtimeStyle['color'] = '@{color}', this.children[0].runtimeStyle['top'] = '@{y}', this.children[0].runtimeStyle['left'] = '@{x}', this.children[0].innerHTML = this.innerHTML, this.children[0].runtimeStyle['filter']= 'progid:DXImageTransform.Microsoft.Blur(PixelRadius=@{blur},MakeShadow=1,shadowOpacity=@{alpha})'); "
+}
+//*14/01/2014*/
+    .before(left, @url, @bgL, @bgT, @width, @height, @top, @left){
+        position: relative;
+            &:before{content:' '; background: url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height; top: @top; left: @left; right: auto; position: absolute;}
+        // iconos con imagenes
+        // hack para ie7 para incluir imagen en before
+        *zoom: ~"expression( this.runtimeStyle['zoom'] = '1', this.insertBefore( document.createElement('small'), this.firstChild ).className='before')";
+        small.before{ background: url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height; top: @top; left: @left; right: auto; position: absolute;}
+    }
+    .before(right, @url, @bgL, @bgT, @width, @height, @top, @right){
+        position: relative;
+            &:before{content:' '; background: url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height; top: @top; left: auto; right: @right; position: absolute;}
+        // iconos con imagenes
+        // hack para ie7 para incluir imagen en before
+        *zoom: ~"expression( this.runtimeStyle['zoom'] = '1', this.insertBefore( document.createElement('small'), this.firstChild ).className='before')";
+        small.before{ background: url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height; top: @top; left: auto; right: @right; position: absolute;}
+    }
+    .after(left, @url, @bgL, @bgT, @width, @height, @top, @left){
+        position: relative;
+            &:after{content:' '; background: url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height; top: @top; left: @left; right: auto; position: absolute;}
+        // iconos con imagenes
+        // hack para ie7 para incluir imagen en before
+        *zoom: ~"expression( this.runtimeStyle['zoom'] = '1', this.appendChild(document.createElement('small')).className='after')";
+        small.after { background: url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height; top: @top; left: @left; right: auto; position: absolute;}
+    }
+    .after(right, @url, @bgL, @bgT, @width, @height, @top, @right){
+        position: relative;
+            &:after{content:' '; background: url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height; top: @top; left: auto; right: @right; position: absolute;}
+        // iconos con imagenes
+        // hack para ie7 para incluir imagen en before
+        *zoom: ~"expression( this.runtimeStyle['zoom'] = '1', this.appendChild(document.createElement('small')).className='after')";
+        small.after { background: url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height; top: @top; left: auto; right: @right; position: absolute;}
+    }
+    /********************************************************************************************************************************************************************************************************/
+    .before(left, @url, @bgL, @bgT, @width, @height, @top, @left, @mTop, @mLeft){
+        position: relative;
+            &:before{content:' '; background: url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height; top: @top; left: @left; right: auto; position: absolute; margin-top: @mTop; margin-left: @mLeft;}
+        // iconos con imagenes
+        // hack para ie7 para incluir imagen en before
+        *zoom: ~"expression( this.runtimeStyle['zoom'] = '1', this.insertBefore( document.createElement('small'), this.firstChild ).className='before')";
+        small.before{ background: url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height; top: @top; left: @left; right: auto; position: absolute; margin-top: @mTop; margin-left: @mLeft;}
+    }
+    .before(right, @url, @bgL, @bgT, @width, @height, @top, @right, @mTop, @mRight){
+        position: relative;
+            &:before{content:' '; background: url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height; top: @top; left: auto; right: @right; position: absolute; margin-top: @mTop; margin-right: @mRight;}
+        // iconos con imagenes
+        // hack para ie7 para incluir imagen en before
+        *zoom: ~"expression( this.runtimeStyle['zoom'] = '1', this.insertBefore( document.createElement('small'), this.firstChild ).className='before')";
+        small.before{ background: url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height; top: @top; left: auto; right: @right; position: absolute; margin-top: @mTop; margin-right: @mRight;}
+    }
+    .after(left, @url, @bgL, @bgT, @width, @height, @top, @left, @mTop, @mLeft){
+        position: relative;
+            &:after{content:' '; background: url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height; top: @top; left: @left; right: auto; position: absolute; margin-top: @mTop; margin-left: @mLeft;}
+        // iconos con imagenes
+        // hack para ie7 para incluir imagen en before
+        *zoom: ~"expression( this.runtimeStyle['zoom'] = '1', this.appendChild( document.createElement('small') ).className='after')";
+        small.after { background: url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height; top: @top; left: @left; right: auto; position: absolute; margin-top: @mTop; margin-left: @mLeft;}
+    }
+    .after(right, @url, @bgL, @bgT, @width, @height, @top, @right, @mTop, @mRight){
+        position: relative;
+            &:after{content:' '; background: url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height; top: @top; left: auto; right: @right; position: absolute; margin-top: @mTop; margin-right: @mRight;}
+        // iconos con imagenes
+        // hack para ie7 para incluir imagen en before
+        *zoom: ~"expression( this.runtimeStyle['zoom'] = '1', this.appendChild( document.createElement('small') ).className='after')";
+        small.after { background: url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height; top: @top; left: auto; right: @right; position: absolute; margin-top: @mTop; margin-right: @mRight;}
+    }
+    /********************************************************************************************************************************************************************************************************/
+    .before(left, bottom, @url, @bgL, @bgT, @width, @height, @bottom, @left, @mBottom, @mLeft){
+        position: relative;
+            &:before{content:' '; background: url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height; top: auto; bottom: @bottom; left: @left; right: auto; position: absolute; margin-bottom: @mBottom; margin-left: @mLeft;}
+        // iconos con imagenes
+        // hack para ie7 para incluir imagen en before
+        *zoom: ~"expression( this.runtimeStyle['zoom'] = '1', this.insertBefore( document.createElement('small'), this.firstChild ).className='before')";
+        small.before{ background: url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height; top: auto; bottom: @bottom; left: @left; right: auto; position: absolute; margin-bottom: @mBottom; margin-left: @mLeft;}
+    }
+    .before(right, bottom, @url, @bgL, @bgT, @width, @height, @bottom, @right, @mBottom, @mRight){
+        position: relative;
+            &:before{content:' '; background: url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height; top: auto; bottom: @bottom; left: auto; right: @right; margin-bottom: @mBottom; margin-right: @mRight; position: absolute;}
+        // iconos con imagenes
+        // hack para ie7 para incluir imagen en before
+        *zoom: ~"expression( this.runtimeStyle['zoom'] = '1', this.insertBefore( document.createElement('small'), this.firstChild ).className='before')";
+        small.before{ background: url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height; top: auto; bottom: @bottom; left: auto; right: @right; margin-bottom: @mBottom; margin-right: @mRight; position: absolute;}
+    }
+    .after(left, bottom, @url, @bgL, @bgT, @width, @height, @bottom, @left, @mBottom, @mLeft){
+        position: relative;
+            &:after{content:' '; background: url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height; top: auto; bottom: @bottom; left: @left; right: auto; position: absolute; margin-bottom: @mBottom; margin-left: @mLeft;}
+         // iconos con imagenes
+        // hack para ie7 para incluir imagen en before
+        *zoom: ~"expression( this.runtimeStyle['zoom'] = '1', this.appendChild( document.createElement('small') ).className='after')";
+        small.after { background: url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height; top:auto; bottom: @bottom; left: @left; right: auto; position: absolute; margin-bottom: @mBottom; margin-left: @mLeft;}
+    }
+    .after(right, bottom, @url, @bgL, @bgT, @width, @height, @bottom, @right, @mBottom, @mRight){
+        position: relative;
+            &:after{content:' '; background: url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height; top: auto; bottom: @bottom; left: auto; right: @right; margin-bottom: @mBottom; margin-right: @mRight; position: absolute;}
+        // iconos con imagenes
+        // hack para ie7 para incluir imagen en before
+        *zoom: ~"expression( this.runtimeStyle['zoom'] = '1', this.appendChild( document.createElement('small') ).className='after')";
+        small.after { background: url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height; top: auto; bottom: @bottom; left: auto; right: @right; margin-bottom: @mBottom; margin-right: @mRight; position: absolute;}
+    }
+    //.after(right, @url, @bgL, @bgT, @width, @height, @top, @right, bottom, @mBottom, @mRight){
+    //    position: relative;
+    //        &:after{content:' '; background: url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height; top: @top; left: auto; right: @right; position: absolute; margin-bottom: @mBottom; margin-right: @mRight;}
+    //    // iconos con imagenes
+    //    // hack para ie7 para incluir imagen en before
+    //    *zoom: ~"expression( this.runtimeStyle['zoom'] = '1', this.appendChild( document.createElement('small') ).className='after')";
+    //    small.after { background: url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height; top: @top; left: auto; right: @right; position: absolute; margin-bottom: @mBottom; margin-right: @mRight;}
+    //}
+    //********************************************************************************************************************************************************************************************************/
+    .background(@url, @bgL, @bgT, @width, @height){
+       background: url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height;
+    }
+    .background(repeat-x, @url, @bgL, @bgT, @width, @height){
+       background: url('@{url}') @bgL @bgT repeat-x; width: @width; height: @height;
+    }
+    .background(indent, @url, @bgL, @bgT, @width, @height){
+       background: url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height; text-indent: -5000px;
+    }
+    .background(color, @url, @color, @bgL, @bgT, @width, @height){
+       background: @color url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height;
+    }
+    .background(color, indent, @url, @color, @bgL, @bgT, @width, @height){
+       background: @color url('@{url}') @bgL @bgT no-repeat; width: @width; height: @height; text-indent: -5000px;
+    }
+//**/
+//*12-02-14*/
+
+.random(@num) {
+    @random:`Math.floor(Math.random()*@{num})`;
+}
+
+.randomColor(){
+    @randomColor: `['#'+Math.floor(Math.random()*16777215).toString(16)]`;
+}
+.randomHex(){
+    @randomHex: `Math.floor(Math.random()*16777215).toString(16)`;
+}
+.linear-gradient(ver,@color1,@color2){
+    .randomHex();
+    @id: @randomHex;
+    @x1: '0%';
+    @y1: '0%';
+    @x2: '0%';
+    @y2: '100%';
+    @c1: escape(%("%d",@color1));
+    @c2: escape(%("%d",@color2));
+    @stops: "<stop stop-color='@{c1}' offset='0'/><stop stop-color='@{c2}' offset='1'/>";
+    background: @color1;
+    background: transparent url( "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 1 1' preserveAspectRatio='none'><linearGradient id='@{id}' gradientUnits='userSpaceOnUse' x1='@{x1}' y1='@{y1}' x2='@{x2}' y2='@{y2}'>@{stops}</linearGradient><rect fill='url(%23@{id})'    x='0' y='0' width='1'    height='1'   /></svg>") no-repeat top left / 100% 100%;
+    background: -moz-linear-gradient(top,  @color1 0%, @color2 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@color1), color-stop(100%,@color2));
+    background: -webkit-linear-gradient(top,  @color1 0%,@color2 100%);
+    background: -o-linear-gradient(top,  @color1 0%,@color2 100%);
+    background: -ms-linear-gradient(top,  @color1 0%,@color2 100%);
+    background: linear-gradient(to bottom,  @color1 0%,@color2 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=@color1, endColorstr=@color2,GradientType=0 );
+}
+.linear-gradient(hor,@color1,@color2){
+    .randomHex();
+    @id: @randomHex;
+    @x1: '0%';
+    @y1: '0%';
+    @x2: '100%';
+    @y2: '0%';
+    @c1: escape(%("%d",@color1));
+    @c2: escape(%("%d",@color2));
+    @stops: "<stop stop-color='@{c1}' offset='0'/><stop stop-color='@{c2}' offset='1'/>";
+    background: @color1;
+    background: transparent url( "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='auto' viewBox='0 0 1 1' preserveAspectRatio='none'><linearGradient id='@{id}' gradientUnits='userSpaceOnUse' x1='@{x1}' y1='@{y1}' x2='@{x2}' y2='@{y2}'>@{stops}</linearGradient><rect fill='url(%23@{id})'    x='0' y='0' width='1'    height='1'   /></svg>") no-repeat  top left / 100% 100%;
+    background: -moz-linear-gradient(left,  @color1 0%, @color2 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,@color1), color-stop(100%,@color2));
+    background: -webkit-linear-gradient(left,  @color1 0%,@color2 100%);
+    background: -o-linear-gradient(left,  @color1 0%,@color2 100%);
+    background: -ms-linear-gradient(left,  @color1 0%,@color2 100%);
+    background: linear-gradient(to right,  @color1 0%,@color2 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=@color1, endColorstr=@color2,GradientType=1 );
+}
+//**/
+//*10/10/2014*/
+#pie{behavior: url('pie.htc');}
+//**/
+//*21/04/2015*/
+#optimize{
+    .quality(){-ms-interpolation-mode: bicubic; image-rendering: optimizeQuality;}
+    .speed(){-ms-interpolation-mode: nearest-neighbor; image-rendering: optimizeSpeed;}
+}
+//**/
+//*15/08/2014*/
+.transform(@effect){
+
+    -webkit-transform: @effect;
+    -moz-transform:    @effect;
+    -ms-transform:     @effect;
+    -o-transform:      @effect;
+    transform:         @effect;
+}
+
+.transform(@effect, important){
+
+    -webkit-transform: @effect !important;
+    -moz-transform:    @effect !important;
+    -ms-transform:     @effect !important;
+    -o-transform:      @effect !important;
+    transform:         @effect !important;
+}
+
+.transform-origin(@effect){
+    -webkit-transform-origin: @effect;
+       -moz-transform-origin: @effect;
+        -ms-transform-origin: @effect;
+         -o-transform-origin: @effect;
+            transform-origin: @effect;
+}
+
+.transform-style(@effect) {
+    -webkit-transform-style: @effect;
+    -moz-transform-style: @effect;
+    -ms-transform-style: @effect;
+    -o-transform-style: @effect;
+    transform-style: @effect;
+}
+
+.transition(@effect){
+    -webkit-transition: @effect;
+    -moz-transition:    @effect;
+    -ms-transition:     @effect;
+    -o-transition:      @effect;
+    transition:         @effect;
+}
+
+.transition(@effect, important){
+    -webkit-transition: @effect !important;
+    -moz-transition:    @effect !important;
+    -ms-transition:     @effect !important;
+    -o-transition:      @effect !important;
+    transition:         @effect !important;
+}
+
+.transition(@effect, @effect1){
+    -webkit-transition: @effect, @effect1;
+    -moz-transition:    @effect, @effect1;
+    -ms-transition:     @effect, @effect1;
+    -o-transition:      @effect, @effect1;
+    transition:         @effect, @effect1;
+}
+
+.transition(@effect, @effect1, @effect2){
+    -webkit-transition: @effect, @effect1, @effect2;
+    -moz-transition:    @effect, @effect1, @effect2;
+    -ms-transition:     @effect, @effect1, @effect2;
+    -o-transition:      @effect, @effect1, @effect2;
+    transition:         @effect, @effect1, @effect2;
+}
+
+.transition-delay(@effect){
+    -webkit-transition-delay: @effect;
+    -moz-transition-delay:    @effect;
+    -ms-transition-delay:     @effect;
+    -o-transition-delay:      @effect;
+    transition-delay:         @effect;
+}
+
+.transition-duration(@effect){
+    -webkit-transition-duration: @effect;
+    -moz-transition-duration:    @effect;
+    -ms-transition-duration:     @effect;
+    -o-transition-duration:      @effect;
+    transition-duration:         @effect;
+}
+
+.transition-property(@effect){
+    -webkit-transition-property: @effect;
+    -moz-transition-property:    @effect;
+    -ms-transition-property:     @effect;
+    -o-transition-property:      @effect;
+    transition-property:         @effect;
+}
+
+.transition-timing-function(@effect){
+    -webkit-transition-timing-function: @effect;
+    -moz-transition-timing-function:    @effect;
+    -ms-transition-timing-function:     @effect;
+    -o-transition-timing-function:      @effect;
+    transition-timing-function:         @effect;
+}
+
+.animation(@effect){
+    -webkit-animation: @effect;
+    -moz-animation:    @effect;
+    -ms-animation:     @effect;
+    -o-animation:      @effect;
+    animation:         @effect;
+}
+
+.animation-play-state(@effect){
+    -webkit-animation-play-state: @effect;
+    -moz-animation-play-state: @effect;
+    -ms-animation-play-state: @effect;
+    -o-animation-play-state: @effect;
+    animation-play-state: @effect;
+}
+
+.keyframes (@name; @arguments) {
+    @-webkit-keyframes @name { @arguments(); }
+    @-moz-keyframes @name { @arguments(); }
+    @-ms-keyframes @name { @arguments(); }
+    @-o-keyframes @name { @arguments(); }
+    @keyframes @name { @arguments(); }
+}
+//**/
+//**/
+//*30/07/2015*/
+.placeholder(@val){
+    .safari &, .chrome &, .android &{line-height: 100% !important;}
+
+    &:-webkit-input-placeholder {line-height: 100%;}
+    &::-webkit-input-placeholder {line-height: 100%;}
+    &::-moz-placeholder {line-height: @val;}
+    &:-ms-input-placeholder {line-height: 100%;}
+};
+
+.quotes(quote){
+    quotes: " \201C " " \201D ";
+    &:before { content: open-quote; }
+    &:after  { content: close-quote; }
+}
+.quotes(doublequote){
+    quotes: " \201C \201C " " \201D \201D ";
+    &:before { content: open-quote;  display: inline-block; padding-right: 5px;}
+    &:after  { content: close-quote; display: inline-block; padding-left: 5px; /* margin-bottom: -10px; vertical-align: bottom; */}
+}
+.quotes(tetraquote){
+    quotes: " \201C \201C \201C " " \201D \201D \201D ";
+    &:before { content: open-quote; }
+    &:after  { content: close-quote; }
+}
+.quotes(arrow){
+    quotes: " \00AB " " \00BB ";
+    &:before { content: open-quote; }
+    &:after  { content: close-quote; }
+}
+.quotes(doublearrow){
+    quotes: " \00AB \00AB " " \00BB \00BB ";
+    &:before { content: open-quote; }
+    &:after  { content: close-quote; }
+}
+.quotes(tetraarrow){
+    quotes: " \00AB \00AB \00AB " " \00BB \00BB \00BB ";
+    &:before { content: open-quote; }
+    &:after  { content: close-quote; }
+}
+//**/
+//*20/08/2015*/
+.bg-traslucid(@color, @opacity){
+    @R: red(@color);
+    @G: green(@color);
+    @B: blue(@color);
+    @rgbacolor: rgba(@R, @G, @B, @opacity);
+    @argbcolor: argb(@rgbacolor);
+
+    background-color: @color;
+    background-color: @rgbacolor;
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=1, StartColorStr='@{argbcolor}', EndColorStr='@{argbcolor}')";
+    filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='@{argbcolor}', EndColorStr='@{argbcolor}');
+    zoom: 1!important;
+}
+//**/
+//*14/08/2015*/
+.grayscale-in() {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+    //*behavior: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg'><filter id='grayscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0  0  0  1 0'/></filter></svg>");
+    //zoom: 1;
+    filter: "data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg'><filter id='grayscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0  0  0  1 0'/></filter></svg>";
+    filter: gray;
+}
+
+.grayscale-out() {
+    -webkit-filter: grayscale(0);
+    -moz-filter: grayscale(0);
+    -ms-filter: grayscale(0);
+    -o-filter: grayscale(0);
+    filter: grayscale(0);
+    //filter: "data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg'><filter id='grayscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0  0  0  1 0'/></filter></svg>";
+    filter: none;
+}
+.opacity(@opacity){
+    @opacityie: @opacity*10;
+    opacity: @opacity;
+    filter: alpha(opacity=@opacityie);
+}

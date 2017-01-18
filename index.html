@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>Test Listing Photo</title>
+
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/jquery-ui.min.css" rel="stylesheet">
+        <link href="css/jquery.fancybox.css" rel="stylesheet">
+        <link href="css/custom.min.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/jquery.jqtransform.js"></script>
+        <script type="text/javascript" src="js/imgnoloadreplace.js"></script>
+        <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
+        <script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
+        <script type="text/javascript" src="js/function.min.js"></script>
+
+    </head>
+    <body>
+        <article>
+            <section class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <p>Number of items:&nbsp;
+                            <span id="countItem">5</span> <!-- Item counter loaded -->
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><a href="#" class="btn btn-default pull-right add fancy" data-fancybox-type="inline" data-fancybox-href="#formAddEditPhoto" >add photo</a></div> <!-- Add photo button -->
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <ul id="ListPhoto" >
+                            <!-- Container for the listing -->
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <!-- Edition and aggregate form -->
+            <section id="formAddEditPhoto">
+                <form action="#" id="formPhoto">
+                    <fieldset>
+                        <input type="hidden" name="action" value="" id="action">
+                        <input type="file" name="photo" id="photo">
+                        <textarea name="description" id="description" cols="30" rows="10" placeholder="add description photo"></textarea>
+                        <button type="submit">upload</button>
+                    </fieldset>
+                </form>
+            </section>
+        </article>
+    </body>
+</html>

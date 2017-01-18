@@ -1,0 +1,118 @@
+@import "lib/_font.less";
+@import "lib/_mixins.less";
+
+/****************************************************************************************************************/
+
+//#jqtransform();
+
+fieldset{width: 100%; max-width: 400px; margin: 0 auto; display: table;
+    &>div{float: left; width: 50%; padding-right: 5%;
+        &:nth-child(even){padding-left: 5%; padding-right: 0px;}
+    }
+    label{font: 1.2em/22px arial,helvetica,sans-serif; color: #666; width: 100%; float: left;}
+    input{width: 100%;}
+    select{width: 100%;}
+}
+
+.jqTransformInputWrapper{
+    border: 1px solid red;
+}
+//img{max-width: 100%; width: 100%;}
+
+
+#ListPhoto{padding: 0px; list-style: none; display: table; margin: 0 auto; text-align: center; width: 100%;
+    li{float: none; width: 32%; max-width: 340px; padding: 1%; /* margin:-3px -1.9px; */ display: inline-block; #relative; background-color: #fff;
+        &.ui-state-highlight{ margin:1%; padding: 0px;  width: 32%; max-width: 320px;
+        }
+
+    }
+
+    .array{#absolute; top: 0; left: 0; z-index: 2; background-color: red; border-radius:50%; width: 15px; height: 15px; line-height: 15px;}
+    img{#optimize.quality();}
+    figure{#relative; z-index: 0;}
+    figcaption{#absolute; top: 0; right: 0; z-index: 1; height: 100%; width: 100%; overflow: hidden;
+        &>div{opacity: 0; #absolute; top: 0; left: 0; width: 100%; height: 100%;
+            -webkit-transition: opacity .25s ease;
+               -moz-transition: opacity .25s ease;
+                -ms-transition: opacity .25s ease;
+                 -o-transition: opacity .25s ease;
+                    transition: opacity .25s ease;
+            background: -webkit-linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,0.27) 36%, rgba(0,0,0,0.32) 50%, rgba(0,0,0,0.48) 100%);
+            background: -o-linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,0.27) 36%, rgba(0,0,0,0.32) 50%, rgba(0,0,0,0.48) 100%);
+            background: linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,0.27) 36%, rgba(0,0,0,0.32) 50%, rgba(0,0,0,0.48) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#7a000000',GradientType=0 );
+        }
+        &:hover{
+            div{
+                opacity: 1;
+            }
+            p{bottom: 0;}
+        }
+        p{#absolute; bottom: -100%; left: 0; padding: 0 5%; font-size: 1.6rem; color: #fff;
+            -webkit-transition: bottom .25s ease;
+               -moz-transition: bottom .25s ease;
+                -ms-transition: bottom .25s ease;
+                 -o-transition: bottom .25s ease;
+                    transition: bottom .25s ease;
+        }
+    }
+
+
+}
+.edit  {#absolute; top: 10px; right: 35px; line-height: 14px; font-size: 1.4em; cursor: pointer;}
+.remove{#absolute; top: 10px; right: 15px; line-height: 14px; font-size: 1.4em; cursor: pointer;}
+
+#formAddEditPhoto{display: none;
+    img{float: left; margin-bottom:15px;}
+    input[type="file"]{float: left; width: 100%; margin-bottom: 15px;}
+    textarea{width: 100%; float: left; margin-bottom: 15px; resize: none;}
+    button[type="submit"]{float: right; margin-bottom: 5px;}
+}
+
+
+
+@media screen and (max-width: 767px) {
+    #ListPhoto{
+        li{
+            width: 100%; max-width: 100%;
+        }
+        img{width: 30%;}
+        figcaption{width: 70%;
+            div{background: none;}
+
+            p{color: #000; bottom: 0;}
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #ListPhoto{max-width: 320px; padding-right: 20px;
+        li{
+            width: 100%; max-width: 320px;
+        }
+        img{width: auto;}
+        figcaption{width: 100%; #relative; margin-top: 25px; margin-bottom: 15px; overflow: visible;
+            div{background: none; }
+
+            p{color: #000; bottom: 0; #relative; margin-top: 15px;}
+            span{top:-15px;}
+        }
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    #ListPhoto{
+        li{
+            width: 100%; max-width: 100%;
+        }
+        img{width: 30%;}
+        figcaption{width: 70%;
+            div{background: none;}
+
+            p{color: #000; bottom: 0;}
+        }
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {}
+
+@media screen and (min-width: 1200px) {}

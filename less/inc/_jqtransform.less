@@ -1,0 +1,116 @@
+#jqtransform(){
+    form{
+        &.jqtransformdone{
+            label{margin-top: 4px; margin-right: 8px; display: block; float: left;}
+        }
+        div{
+            &.rowElem{clear: both; padding: 4px 0px;}
+        }
+    }
+    button{
+        &.jqTransformButton {margin: 0px; padding: 0px; border: none; background-color: transparent; cursor: pointer; overflow: visible; font-family: Arial;
+            *:first-child+html &[type]{width: 1;}
+            span {display: block; float: left; padding: 0px 4px 0px 0px; margin: 0px; height: 33px;
+                span {color: #333; padding: 8px 4px 0px 8px; font-weight: normal; font-size: 12px; line-height: 13px; display: block; text-decoration: none; height: 33px;}
+            }
+            * html & { height: 33px;}
+            * & span span { height: 25px;}
+            *+ html & { height: 33px;}
+            *+ & span span { height: 25px;}
+        }
+        &.jqTransformButton_hover{
+            span{background-position: right -33px;
+                span{background-position: left -33px;}
+            }
+        }
+        &.jqTransformButton_click{
+            span{background-position: right -66px;
+                span{background-position: left -66px;}
+            }
+        }
+    }
+    *:first-child+html button.jqTransformButton[type]{width: 1;}
+    .jqTransformInputWrapper {height: 31px; padding: 0px; float: left; border:1px solid transparent;
+        .jqTransformInputInner {padding: 0px; margin: 0px;
+            div {height: 29px; margin: 0px 0px 0px 0px; position: relative; background-color: #fff;
+                input {font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 18px; vertical-align: middle; height: 29px; color: #404040; border: none; padding: 0px 2% 0px 2%; margin: 0px; background: transparent; outline: none;
+                    &:focus, &:-moz-ui-invalid:not(output){outline: none; box-shadow: none;}
+                }
+                small{width: 17px; padding-right: 10px; height: 100%; #absolute; right: 0px; top: 0; background-color: inherit; margin-right: 2%;}
+            }
+            * html & div input {padding: 6px 0 0 0; margin: 0 0 0 -8px; height: 24px;}
+            *+ html & div input {padding: 6px 0 0 0; margin-left: -10px; height: 24px;}
+            &.error div input{border: 2px solid #FF0000; border-radius: 3px; height: 92% !important; position: absolute; width: 95% !important; padding: 0 2% !important;}
+        }
+        &.jqTransformSafari .jqTransformInputInner div {position: relative; overflow: hidden; margin: 0px 8px;
+            input {background-color: none; position: absolute; top: -10px; left: -2px; height: 42px; padding-left: 4px;}
+        }
+        &.jqTransformInputWrapper_hover{ background-position: left -31px;
+            div.jqTransformInputInner{ background-position: right -31px;}
+        }
+        &.jqTransformInputWrapper_focus{ background-position: left -62px;
+            div.jqTransformInputInner{ background-position: right -62px;}
+        }
+    }
+    table{
+        &.jqTransformTextarea{
+            td{font-size: 10px; line-height: 1px; width: 5px; height: 5px; margin: 0; padding: 0;
+                &#jqTransformTextarea-mm textarea{font-size: 12px; line-height: 16px; margin: 0; padding: 0; border: 0; background: none;}
+                &#jqTransformTextarea-tl{}
+                &#jqTransformTextarea-tm{width: auto;}
+                &#jqTransformTextarea-tr{}
+                &#jqTransformTextarea-ml{}
+                &#jqTransformTextarea-mm{height: auto; width: 100%;}
+                &#jqTransformTextarea-mr{}
+                &#jqTransformTextarea-bl{}
+                &#jqTransformTextarea-bm{width: auto;}
+                &#jqTransformTextarea-br{}
+            }
+            &.error{border: 2px solid red; border-radius: 3px; display: block; height: 100% !important; margin-top: -2px;}
+            .jqTransformSafariTextarea div {position: relative; overflow: hidden; border: 0px solid red;}
+            .jqTransformSafariTextarea textarea{background: none; position: absolute; top: -10px; left: -10px; padding: 10px 10px 10px 10px; resize: none;}
+        }
+        &.jqTransformTextarea-hover td#jqTransformTextarea-tl{}
+        &.jqTransformTextarea-hover td#jqTransformTextarea-tm{}
+        &.jqTransformTextarea-hover td#jqTransformTextarea-tr{}
+        &.jqTransformTextarea-hover td#jqTransformTextarea-ml{}
+        &.jqTransformTextarea-hover td#jqTransformTextarea-mm{}
+        &.jqTransformTextarea-hover td#jqTransformTextarea-mr{}
+        &.jqTransformTextarea-hover td#jqTransformTextarea-bl{}
+        &.jqTransformTextarea-hover td#jqTransformTextarea-bm{}
+        &.jqTransformTextarea-hover td#jqTransformTextarea-br{}
+        &.jqTransformTextarea-focus td#jqTransformTextarea-tl{}
+        &.jqTransformTextarea-focus td#jqTransformTextarea-tm{}
+        &.jqTransformTextarea-focus td#jqTransformTextarea-tr{}
+        &.jqTransformTextarea-focus td#jqTransformTextarea-ml{}
+        &.jqTransformTextarea-focus td#jqTransformTextarea-mm{}
+        &.jqTransformTextarea-focus td#jqTransformTextarea-mr{}
+        &.jqTransformTextarea-focus td#jqTransformTextarea-bl{}
+        &.jqTransformTextarea-focus td#jqTransformTextarea-bm{}
+        &.jqTransformTextarea-focus td#jqTransformTextarea-br{}
+    }
+    .jqTransformRadioWrapper {float: left;display: block;margin: 0px 4px; margin-top: 5px;
+        .jqTransformRadio {vertical-align: middle; height: 19px; width: 18px; display: block;}
+        &.error .jqTransformRadio{border: 2px solid red; border-radius: 50%; width: 15px !important; height: 15px; margin-top: -1px; background-position: -1px -142px !important;}
+    }
+    span.jqTransformCheckboxWrapper{display: block;float: left; margin-top: 5px;
+        a.jqTransformCheckbox {vertical-align: middle; height: 19px; width: 18px; display: block;}
+        &.error .jqTransformCheckbox{ border: 1px solid red; border-radius: 50%; height: 15px; width: 15px; margin-top: -1px;}
+
+    }
+    a.jqTransformFocus{box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);}
+    a.jqTransformChecked { background-position: center bottom;}
+    .jqTransformSelectWrapper {width: 45px; position: relative; height: 31px;float: left;
+        .error{background: none repeat scroll 0 0 #FFFFFF; margin: -2px !important; border: 2px solid #FF0000; border-radius: 3px; box-shadow: 0 0 9px #DDDDDD inset; width: 100% !important; height: auto;}
+        div span {font-size: 12px; float: none; position: absolute; white-space: nowrap; height: 31px; line-height: 15px; padding: 8px 0 0 7px; overflow: hidden; cursor: pointer;}
+        a.jqTransformSelectOpen {display: block; position: absolute; right: 0px; width: 31px; height: 31px;}
+        ul {position: absolute; width: 43px; top: 30px; left: 0px; list-style: none; background-color: #FFF; border: solid 1px #CCC; display: none; margin: 0px; padding: 0px; height: 150px; overflow: auto; overflow-y: auto; z-index: 10;
+            a {display: block; padding: 5px; text-decoration: none; color: #333; background-color: #FFF; font-size: 12px;
+                &.selected {background: #EDEDED; color: #333;}
+                &:hover, &.selected:hover, &:focus, &.selected:focus {background: #3582c4; color: #fff;}
+            }
+        }
+        .jqTransformSelectOptionDefault{opacity: 0.54; filter:alpha(opacity=54);}
+    }
+    .jqTransformHidden {display: none;}
+}
